@@ -24,6 +24,33 @@ h1 {
   margin: 5px;
 }
 
+.vizPanel {
+	position:absolute;
+	left:0px;
+	top:0px;
+}
+.settingsPanel {
+	position:absolute;
+	right:0px;
+	top:0px;
+}
+.visualizeTable {
+	position:absolute;
+	right:25%;
+	top:0px;
+}
+.visualizeMap {
+	position:absolute;
+	right:30%;
+	top:0px;
+}
+.Charts {
+	position:absolute;
+	right:34.5%;
+	top:0px;
+}
+
+
 .serverResponseLabelError {
   color: red;
 }

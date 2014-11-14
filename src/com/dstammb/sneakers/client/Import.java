@@ -1,5 +1,6 @@
 package com.dstammb.sneakers.client;
 
+
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -9,17 +10,20 @@ import java.util.ArrayList;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.RootPanel;
 
-public class Import implements IO {
+public class Import {
 	
 public ArrayList<ArrayList<String>> runImport() {
-	String csvFile = "/home/nw21/Dokumente/HS_2014/Software_Engenieering/Class02/population 1990-2011.csv";
-	BufferedReader br = null;
+	
+	String csvFile = "com.dstammb.war.sprint1.gwt.population 1990-2011.csv";
 	String line = "";
     String csvSplitBy = "\\,";
     ArrayList< ArrayList<String> > wholeList =new ArrayList();
-    try {
-        
-        br = new BufferedReader(new FileReader(csvFile));
+    //BufferedReader br = null;
+    /*
+    try {     
+    	//foreignData=makeRPCCall();
+    //br = new BufferedReader(new FileReader(csvFile));
+    
         int numColumns=0;
         int j=0;
         while ((line = br.readLine()) != null && line.length()!=0 && j!=0) {
@@ -35,7 +39,7 @@ public ArrayList<ArrayList<String>> runImport() {
         	}
         	/*for(int i=0;i<dataLine.length;i++) {
         		RootPanel.get().add(new Label(dataLine.[i]));
-        	}*/
+        	}* /
         	//ArrayList<String> dataLine = new ArrayList();
            // for(int i=0;i<dataLine.length; i++) {
             	//dataLine.add(dataLine[i]);
@@ -67,6 +71,19 @@ public ArrayList<ArrayList<String>> runImport() {
             }
         }
     }
+    */
+    
+    for(int i=0;i<20;++i) {
+    	ArrayList<String> toBeInserted = new ArrayList();
+
+    	toBeInserted.add("1");
+    	toBeInserted.add("2");
+    	toBeInserted.add("3");
+    	toBeInserted.add("4");
+    	toBeInserted.add("5");
+    	wholeList.add(toBeInserted);
+    }
+    
  return wholeList;
 }
 }

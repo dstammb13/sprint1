@@ -1,6 +1,7 @@
 package com.dstammb.sneakers.client;
 
 import java.util.ArrayList;
+import java.io.BufferedReader;
 
 public class Visualization {
 

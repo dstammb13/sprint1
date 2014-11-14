@@ -6,7 +6,7 @@ import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.FlexTable;
 import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.PopupPanel;
-
+import java.io.BufferedReader;
 public class VisualizeTable extends Visualization {
 	public FlexTable printTable(ArrayList<ArrayList<String>> data) {
 	FlexTable t = new FlexTable();
@@ -21,7 +21,7 @@ public class VisualizeTable extends Visualization {
 	column = 0;
 	
 	int from=0;
-	int numElements=20;
+	int numElements=5;
 	for(int i=from;i<from+numElements;i++) {
 		row = fillRow(t, row, data.get(i));
 	}
