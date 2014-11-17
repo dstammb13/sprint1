@@ -27,7 +27,23 @@ public class VisualizeTable extends Visualization {
 	}
 	
 	return t;
-	}/*
+	}
+	
+	public FlexTable printPopulationTable(ArrayList<ArrayList<String>> data) {
+		FlexTable t = new FlexTable();
+		int row = 0;
+		int column = 0;
+		t.setText(row,column,"country");
+		t.setText(row,++column,"year");
+		t.setText(row,++column,"population");
+		int from=0;
+		int numElements=5;
+		for(int i=from;i<from+numElements;i++) {
+			row = fillRow(t, row, data.get(i));
+		}
+		return t;
+	}
+	/*
 	public PopupPanel visualizePopup(Array) {
 		FlexTable t;
 		t = printTable(data);
@@ -50,14 +66,14 @@ public class VisualizeTable extends Visualization {
 	public int fillRow(FlexTable t, int row, ArrayList<String> data) {
 		
 		int column = 0;
-		t.setText(++row, column, data.get(0));
-		t.setText(row, ++column, data.get(1));
-		t.setText(row, ++column, data.get(2));
-		t.setText(row, ++column, data.get(3));
-		t.setText(row, ++column, "v.getData()");
-		t.setText(row, ++column, data.get(4));
+		row++;
+		for(int i=0;i<data.size();++i) {
+			t.setText(row, column, data.get(i));
+			column++;
+		}
 		return row;
 	}
+	
 	
 	}
 	

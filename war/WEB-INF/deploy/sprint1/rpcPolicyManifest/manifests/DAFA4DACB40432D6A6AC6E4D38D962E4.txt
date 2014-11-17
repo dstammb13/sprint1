@@ -1,0 +1,2 @@
+serviceClass: com.dstammb.sneakers.client.ClientService
+path: 932F78DB25CFCBA4E50A898B3B34EBB3.gwt.rpc
