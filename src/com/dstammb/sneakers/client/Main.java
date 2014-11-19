@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import com.dstammb.sneakers.shared.FieldVerifier;
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.dom.client.Style.Unit;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.dom.client.KeyCodes;
@@ -15,6 +16,7 @@ import com.google.gwt.event.dom.client.KeyUpHandler;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.DialogBox;
+import com.google.gwt.user.client.ui.DockLayoutPanel;
 import com.google.gwt.user.client.ui.FlexTable;
 import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.HorizontalPanel;
@@ -22,6 +24,10 @@ import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.VerticalPanel;
+import com.google.gwt.maps.client.MapWidget;
+import com.google.gwt.maps.client.Maps;
+import com.google.gwt.maps.client.control.LargeMapControl;
+import com.google.gwt.maps.client.geom.LatLng;
 
 public class Main implements EntryPoint {
 
@@ -38,7 +44,10 @@ public class Main implements EntryPoint {
 				+ "connection and try again.";
 	
 	public void onModuleLoad() {
-
+		
+		
+	
+		
 		final Button sendButton = new Button("Send");
 		final TextBox nameField = new TextBox();
 		nameField.setText("GWT User");
@@ -146,6 +155,7 @@ public class Main implements EntryPoint {
 		visualizeTable.setStyleName("visualizeTable");
 		MyHandler handler = new MyHandler();
 		Button visualizeMap = new Button("Map");
+		RootPanel.get().add(dialogBox);
 		visualizeMap.addClickHandler(new ClickHandler() {
 			/**
 			 * Fired when the user clicks on the sendButton.
@@ -170,7 +180,8 @@ public class Main implements EntryPoint {
 			private void sendNameToServer() {
 				// First, we validate the input.
 				errorLabel.setText("");
-				String textToServer = nameField.getText();
+				//String textToServer = nameField.getText();
+				String textToServer = "Test Test";
 				if (!FieldVerifier.isValidName(textToServer)) {
 					errorLabel.setText("Please enter at least four characters");
 					return;
@@ -195,13 +206,16 @@ public class Main implements EntryPoint {
 							}
 
 							public void onSuccess(String result) {
+								
 								RootPanel.get().add(new Label("Server replies: "+ result));
 								dialogBox.setText("Remote Procedure Call");
+								dialogBox.setText(result);
 								serverResponseLabel
 										.removeStyleName("serverResponseLabelError");
 								serverResponseLabel.setHTML(result);
 								dialogBox.center();
 								closeButton.setFocus(true);
+								
 							}
 						});
 			}
@@ -233,7 +247,6 @@ public class Main implements EntryPoint {
 		settingsPanel.setStyleName("settingsPanel");
 		settingsPanel.add(new Label("Settings"));
 		//create setting buttons
-		
 		Button choosePopulation = new Button("Population");
 			choosePopulation.addClickHandler(new ClickHandler() {
 				public void onClick(ClickEvent event) {
@@ -244,7 +257,14 @@ public class Main implements EntryPoint {
 
 		    }
 		  });
-		
+			//googleMaps Test
+			
+			 Maps.loadMapsApi("", "2", false, new Runnable() {
+			      public void run() {
+			        DockLayoutPanel map = buildUi();
+			        RootPanel.get().add(map);
+			      }
+			    });
 		
 		/*for(int i=0;i<importedData.size();i++) {
 
@@ -295,5 +315,21 @@ public class Main implements EntryPoint {
 	// Add a handler to send the name to the server
 	
 }
+	public DockLayoutPanel buildUi() {
+	    // Open a map centered on Cawker City, KS USA
+	    LatLng cawkerCity = LatLng.newInstance(39.509, -98.434);
+
+	    final MapWidget map = new MapWidget(cawkerCity, 2);
+	    map.setSize("100%", "100%");
+	    // Add some controls for the zoom level
+	    map.addControl(new LargeMapControl());
+
+	    final DockLayoutPanel dock = new DockLayoutPanel(Unit.PX);
+	    dock.addNorth(map, 500);
+
+	    // Add the map to the HTML host page
+	    return dock;
+
+	}
 }
 

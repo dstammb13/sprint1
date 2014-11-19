@@ -28,11 +28,13 @@ h1 {
 	position:absolute;
 	left:0px;
 	top:0px;
+	background-color:#0ff;
 }
 .settingsPanel {
 	position:absolute;
 	right:0px;
 	top:0px;
+	background-color:#0ee;
 }
 .visualizeTable {
 	position:absolute;
